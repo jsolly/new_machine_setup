@@ -1,4 +1,4 @@
-1 - Set terminal theme to 'Pro'
+1 - Set terminal theme to 'Pro' ...use Source Code Pro font...set opacity to ~90%. Make sure antialias text is turned on.
 2 - Change font size
 3 - xcode-select --install
 4 - install homebrew
