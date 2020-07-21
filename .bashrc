@@ -10,6 +10,9 @@
 #PATH="/Library/Frameworks/Python.framework/Versions/3.8/bin:${PATH}"
 #export PATH
 #
+## Set nano as default editor
+#export EDITOR=/usr/bin/nano
+#
 ## Detect which `ls` flavor is in use
 #if ls --color > /dev/null 2>&1; then # GNU `ls`
 #	colorflag="--color"
