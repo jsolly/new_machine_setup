@@ -1,36 +1,23 @@
-#!/usr/bin/env bash
-############################
-# This script creates symlinks from the home directory to any desired dotfiles in ${homedir}/dotfiles
-# And also installs Homebrew Packages
-# And sets Sublime preferences
-############################
 
-if [ "$#" -ne 1 ]; then
-    echo "Usage: install.sh <home_directory>"
-    exit 1
-fi
+# Install Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-homedir=$1
+# Install Brew Packages
+brew install python
+brew install tree
+brew install grep # How do I automatically set PATH to include GNU grep?
 
-# dotfiles directory
-dotfiledir=${homedir}/dotfiles
+# Install MacOS Applications
+brew install google-chrome
+brew install --cask firefox
+brew install --cask brave-browser
+brew install --cask spotify
+brew install --cask discord
+brew install --cask skype
+brew install --cask pycharm-ce
 
-# list of files/folders to symlink in ${homedir}
-files="bash_profile bashrc bash_prompt aliases private"
+# Install Source Code Pro Font
+brew tap homebrew/cask-fonts
+brew install svn
+brew install --cask font-source-code-pro
 
-# change to the dotfiles directory
-echo "Changing to the ${dotfiledir} directory"
-cd ${dotfiledir}
-echo "...done"
-
-# create symlinks (will overwrite old dotfiles)
-for file in ${files}; do
-    echo "Creating symlink to $file in home directory."
-    ln -sf ${dotfiledir}/.${file} ${homedir}/.${file}
-done
-
-# Download Git Auto-Completion
-curl "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash" > ${homedir}/.git-completion.bash
-
-# Run the Homebrew Script
-./brew.sh
